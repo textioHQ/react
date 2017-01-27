@@ -1,5 +1,5 @@
 {
-  "name": "@textio/react",
+  "name": "react",
   "description": "React is a JavaScript library for building user interfaces.",
   "version": "15.4.2",
   "keywords": [
@@ -17,6 +17,10 @@
     "dist/",
     "lib/"
   ],
+  "scripts": {
+    "publish": "npm version patch && npm pack && s3-deploy *.tgz --region us-east-1 --bucket textio-web-deps",
+    "postpublish": "git push && git push --tags"
+  },
   "main": "react.js",
   "repository": "facebook/react",
   "engines": {
@@ -25,7 +29,8 @@
   "dependencies": {
     "fbjs": "^0.8.4",
     "loose-envify": "^1.1.0",
-    "object-assign": "^4.1.0"
+    "object-assign": "^4.1.0",
+    "s3-deploy": "^0.7.3"
   },
   "browserify": {
     "transform": [
