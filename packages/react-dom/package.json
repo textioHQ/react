@@ -15,10 +15,15 @@
   "dependencies": {
     "fbjs": "^0.8.1",
     "loose-envify": "^1.1.0",
-    "object-assign": "^4.1.0"
+    "object-assign": "^4.1.0",
+    "s3-deploy": "^0.7.3"
   },
   "peerDependencies": {
     "react": "^15.4.2"
+  },
+  "scripts": {
+    "publish": "npm version patch && npm pack && s3-deploy *.tgz --region us-east-1 --bucket textio-web-deps",
+    "postpublish": "git push && git push --tags"
   },
   "files": [
     "LICENSE",
