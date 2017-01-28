@@ -16,6 +16,7 @@ var ExecutionEnvironment = require('ExecutionEnvironment');
 var FallbackCompositionState = require('FallbackCompositionState');
 var SyntheticCompositionEvent = require('SyntheticCompositionEvent');
 var SyntheticInputEvent = require('SyntheticInputEvent');
+var UserAgent = require('UserAgent');
 
 import type { TopLevelTypes } from 'EventConstants';
 
@@ -41,7 +42,7 @@ var canUseTextInputEvent = (
   'TextEvent' in window &&
   !documentMode &&
   !isPresto() &&
-  !/\bEdge\/\d/.test(navigator.userAgent)
+  !UserAgent.isBrowser('Edge')
 );
 
 // In IE9+, we have access to composition events, but the data supplied
